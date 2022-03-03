@@ -20,6 +20,21 @@ async function sha256(message) {
   console.log(hashHex);
   return hashHex;
 }
+function startCrack(){
+  var passl = document.getElementByName('fname')[0].value
+  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+  var len = passl.length;
+  var hashed = '';
+  var randomstring = '';
+  var goal = document.getElementById('hash').value
+  while (hashed != goal) {
+    for (i = 0; i < len; i++;) {
+      var rnum = Math.floor(Math.random() * chars.length);
+      randomstring += chars.substring(rnum,rnum+1);
+    }
+    var hashed = sha256(randomstring);
+    document.getElementById('out').value = document.getElementById('out').value + '\n' + hashed;
+  }
 </script>
 <h1>Password Cracking Demo</h1>
 <p><i>How do you crack a password?<i><p>
