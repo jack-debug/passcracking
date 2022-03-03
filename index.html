@@ -39,10 +39,10 @@ function startCrack(){
 <h1>Password Cracking Demo</h1>
 <p><i>How do you crack a password?<i><p>
 <p>Password cracking nowadays requires <b>brute-forcing</b>. This website will show you an example of how a password bruteforcer would work with a SHA256 encrypted hash.</p>
-<form action="/action_page.php">
+<form>
   <label for="fname">Enter a password for the program to bruteforce:</label>
   <input type="text" id="fname" name="fname" onchange="document.getElementById('hash').value = sha256(document.getElementByName('fname')[0].value);"><br><br>
-  <input type="submit" value="Crack!">
+  <input type="submit" value="Crack!" onclick='startCrack();'>
 </form>
 <p>Your password's hash</p>
 <textarea id="hash" name="w3review" rows="4" cols="50">
