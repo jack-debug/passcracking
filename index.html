@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<title>
+Password Cracking by jack-debug
+</title>
+<body>
+<script>
+function hash(string) {
+  const utf8 = new TextEncoder().encode(string);
+  return crypto.subtle.digest('SHA-256', utf8).then((hashBuffer) => {
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(bytes => bytes.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  });
+}
+<script>
+<h1>Password Cracking Demo</h1>
+<p><i>How do you crack a password?<i><p>
+<p>Password cracking nowadays requires <b>brute-forcing</b>. This website will show you an example of how a password bruteforcer would work with a SHA256 encrypted hash.</p>
+<form action="/action_page.php">
+  <label for="fname">Enter a password for the program to bruteforce:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <input type="submit" value="Crack!">
+</form>
+<textarea id="hash" name="w3review" rows="4" cols="50">
+
+</textarea>
+<textarea id="out" name="w3review" rows="4" cols="50">
+
+</textarea>
+</body>
+</html>
